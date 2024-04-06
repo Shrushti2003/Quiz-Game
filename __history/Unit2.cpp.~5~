@@ -1,0 +1,152 @@
+																			//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#include <queue>
+#pragma hdrstop
+
+#include "Unit2.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+class Question{
+	public:
+	char* Text;
+	char* Answer1;
+	char* Answer2;
+	char* Answer3;
+	int CorrectAnswer;
+
+   Question() {}
+	Question(char* text, char*ans1, char*ans2, char*ans3, int correctAns){
+			 Text = text;
+			 Answer1 = ans1;
+			 Answer2 = ans2;
+			 Answer3 = ans3;
+			 CorrectAnswer = correctAns;
+	}
+};
+
+std::queue<Question> LoadQuestions(){
+  Question q1=Question("1.  Which color does not appear on the Olympic rings?", "Black", "Orange", "Green", 2);
+  Question q2=Question("2.  What is the chemical formula for Table Salt?", "NaCl", "NaCl2", "Na2Cl", 1);
+  Question q3=Question("3.  What is the longest river in the world?", "Nile", "Mississippi", "Amazon", 1);
+  Question q4 = Question("4.  Who wrote 'Romeo and Juliet'?", "William Shakespeare", "Charles Dickens", "Jane Austen", 1);
+  Question q5 = Question("5.  What is the capital of France?", "Berlin", "London", "Paris", 3);
+  Question q6 = Question("6.  What is the chemical symbol for gold?", "Ag", "Au", "Fe", 2);
+  Question q7 = Question("7.  Which planet is known as the Red Planet?", "Mars", "Venus", "Jupiter", 1);
+  Question q8 = Question("8.  Who painted the Mona Lisa?", "Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", 3);
+  Question q9 = Question("9.  What is the square root of 81?", "9", "6", "7", 1);
+  Question q10 = Question("10.  Which country is known as the Land of the Rising Sun?", "China", "Japan", "India", 2);
+  Question q11 = Question("11.  What is the tallest mountain in the world?", "Mount Everest", "K2", "Kangchenjunga", 1);
+  Question q12 = Question("12.  What is the largest desert in the world?", "Sahara Desert", "Arabian Desert", "Gobi Desert", 1);
+  Question q13 = Question("13.   In which country is the Great Pyramid of Giza located?", "Egypt", "India", "China", 1);
+  Question q14 = Question("14.  Who was the first woman to win a Nobel Prize?", "Marie Curie", "Rosalind Franklin", "Mother Teresa", 1);
+  Question q15 = Question("15.  What is the largest ocean on Earth?", "Atlantic Ocean", "Indian Ocean", "Pacific Ocean", 3);
+  Question q16 = Question("16.  Which famous ship sank on its maiden voyage in 1912?", "HMS Bounty", "SS Great Eastern", "RMS Titanic", 3);
+  Question q17 = Question("17.  Which famous scientist developed the theory of general relativity?", "Isaac Newton", "Albert Einstein", "Stephen Hawking", 2);
+  Question q18 = Question("18.  Which supercar manufacturer produces the model 'Chiron'?", "Ferrari", "Bugatti", "Lamborghini", 2);
+  Question q19 = Question("19.  Who portrays the character Peter Quill, also known as Star-Lord, in the 'Guardians of the Galaxy' films?", "Chris Hemsworth", "Chris Evans", "Chris Pratt", 3);
+  Question q20 = Question("20.  Which character famously sang 'Smelly Cat'?", "Phoebe", "Monica", "Rachel", 1);
+
+
+  std::queue<Question> questions;
+  questions.push(q1);
+  questions.push(q2);
+  questions.push(q3);
+  questions.push(q4);
+  questions.push(q5);
+  questions.push(q6);
+  questions.push(q7);
+  questions.push(q8);
+  questions.push(q9);
+  questions.push(q10);
+  questions.push(q11);
+  questions.push(q12);
+  questions.push(q13);
+  questions.push(q14);
+  questions.push(q15);
+  questions.push(q16);
+  questions.push(q17);
+  questions.push(q18);
+  questions.push(q19);
+  questions.push(q20);
+
+
+		return questions;
+
+}
+std :: queue<Question> questions;
+Question currentQuestion;
+int selectedAnswer;
+int points = 0;
+
+TForm2 *Form2;
+//---------------------------------------------------------------------------
+__fastcall TForm2::TForm2(TComponent* Owner)
+	: TForm(Owner)
+{
+	questions = LoadQuestions();
+	currentQuestion=questions.front();
+
+	QuestionLabel->Text = currentQuestion.Text;
+	Answer1RadioButton->Text = currentQuestion.Answer1;
+	Answer2RadioButton->Text = currentQuestion.Answer2;
+	Answer3RadioButton->Text = currentQuestion.Answer3;
+
+	questions.pop();
+	PointsLabel->Text = points;
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TForm2::Answer1RadioButtonChange(TObject *Sender)
+{
+	  selectedAnswer=1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Answer2RadioButtonChange(TObject *Sender)
+{
+	   selectedAnswer=2;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Answer3RadioButtonChange(TObject *Sender)
+{
+	  selectedAnswer=3;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::ConfirmButtonClick(TObject *Sender)
+{
+   if( selectedAnswer == currentQuestion.CorrectAnswer){
+   points++;
+   PointsLabel->Text = points;
+   }
+
+if(!questions.empty()){
+	currentQuestion = questions.front();
+
+    QuestionLabel->Text = currentQuestion.Text;
+	Answer1RadioButton->Text = currentQuestion.Answer1;
+	Answer2RadioButton->Text = currentQuestion.Answer2;
+	Answer3RadioButton->Text = currentQuestion.Answer3;
+
+	questions.pop();
+
+	Answer1RadioButton -> IsChecked = false;
+	Answer2RadioButton -> IsChecked = false;
+	Answer3RadioButton -> IsChecked = false;
+   }
+   else{
+	   ConfirmButton->Enabled = false;
+	   //ConfirmButton->Text = "THE END";
+   }
+ }
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
