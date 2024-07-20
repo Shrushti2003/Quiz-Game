@@ -46,7 +46,7 @@ The main objective of this project is to offer an engaging quiz game experience.
     - B) Madrid
     - C) Paris
   - Select Option C and press "Confirm Button."
-  - Output: "Correct Answer! You've gained 1 point."
+  - Output: "Correct Answer!"
 - **Incorrect Answer**:
   - Question: "What is the largest planet in our solar system?"
   - Options:
@@ -54,7 +54,7 @@ The main objective of this project is to offer an engaging quiz game experience.
     - B) Jupiter
     - C) Mars
   - Select Option A and press "Confirm Button."
-  - Output: "Wrong Answer! The correct answer is Jupiter. You've lost 1 point."
+  - Output: "Wrong Answer! The correct answer is Jupiter."
 
 ## Conclusion
 This C++ Quiz Game App provides an engaging and educational way to test your knowledge across a range of questions. With a simple interface and straightforward scoring system, it offers both entertainment and an opportunity for learning.
