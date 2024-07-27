@@ -56,10 +56,10 @@ The main objective of this project is to offer an engaging quiz game experience.
   - Select Option A and press "Confirm Button."
   - Output: "Wrong Answer! The correct answer is Jupiter."
 
-## Conclusion
+# Conclusion
 This C++ Quiz Game App provides an engaging and educational way to test your knowledge across a range of questions. With a simple interface and straightforward scoring system, it offers both entertainment and an opportunity for learning.
 
 [YouTube video link for the Quiz Game App](https://youtu.be/DdCMA92CzWc?si=zGUEAxGpBppC8G4B)
 
-This format delivers a clear and concise overview of your Quiz Game App project, focusing on its functionality and user interaction. 
+##### This format delivers a clear and concise overview of your Quiz Game App project, focusing on its functionality and user interaction. 
 ---
